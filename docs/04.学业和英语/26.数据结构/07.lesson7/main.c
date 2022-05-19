@@ -1,25 +1,21 @@
 #include <stdio.h>
 #include <string.h>
 
-int maxLen(char *str,int len){
-  int ans = 0;
-  for(int i=0;i<len-1;i++){
-    // printf("%c",str[i]);
-    int tmp_i = i;
-    for(int j=i+1;j<len;j++){
-      int count  = 0;
-      int tmp_j = j;
-      while(tmp_i<len&&tmp_j<len&&str[tmp_i]==str[tmp_j]){
-        count++;
-        if(tmp_j==len){
-          ans = count>ans?count:ans;
-        }
-        tmp_i++;
-        tmp_j++;
-      }
+int StrEach[100];
+int loadStrA(char *str,int len){
+  StrEach[0] = 0;//
+  int i=0,j=0;//i 代表串的前缀后缀最大公共长度 j代表每个子串
+  for(j = 1;j < len;j++){
+    while(str[i]!=str[j]&&i>0){//不符合时该子串公共长度
+      i = StrEach[i-1];
+    }
+    if(str[i]==str[j]){//符合前缀后缀的公共串+1
+      i++;
+      StrEach[j] = i;
+    }else{
+      StrEach[j]=0;
     }
   }
-  return ans;
 }
 int getStrLen(char *str){
   int i = 0;
@@ -28,8 +24,10 @@ int getStrLen(char *str){
 }
 
 int main(){
-  char *str="yuandehua";
-  printf("%s",str);
+  char *str="abcdabd";
   int len = getStrLen(str);
-  printf("%d",maxLen(str,len));
+  loadStrA(str,len);
+  for(int i =0;i<len;i++){
+    printf("%d ",StrEach[i]);
+  }
 }
