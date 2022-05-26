@@ -22,13 +22,11 @@ int Index_BF(char *s,char *t,int pos){
      return -1;
    }
 }
-
-
 int main(){
   //待测人数DNA主串
   char *Persons[]={
     "poiuytrewq",
-    "lkjhgfdsaa",
+    "lkjsaassaa",
     "mnbvcxzzzz",
     "yuansaasde"
   };
@@ -37,16 +35,15 @@ int main(){
   char Virus[]="saassaas";
   for(int i=0;i<4;i++){//待测人数循环
     char *tmp = Persons[i];//当前待测,某人的DNA
-    printf("111%s\n",tmp);
-    for(int j=0;j<4;j++){//获得病毒可以组成每个环的DNA序列,依次检测
-     for(int z=0;z<4;z++){
-       char Vtmp[4];
+    for(int j=0;j<=4;j++){//获得病毒可以组成每个环的DNA序列,依次检测
+     for(int z=0;z<=4;z++){
+       char Vtmp[5];
        int flag = 0;
        Vtmp[z] = Virus[j+z];
       //  printf("xxx");
        flag = Index_BF(tmp,Vtmp,0);
        if(flag!=-1){
-         printf("序号：%d感染病毒--DNA匹配位置:%d\n",i,flag);
+         printf("序号：%d感染病毒--DNA匹配位置:%d\n",i+1,flag);
          break;
        }
      }
