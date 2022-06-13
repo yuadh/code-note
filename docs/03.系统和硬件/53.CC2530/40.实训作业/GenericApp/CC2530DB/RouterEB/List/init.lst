@@ -1,0 +1,792 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.10.1.40194/W32 for 8051         07/Jun/2022  15:17:38 #
+# Copyright 2004-2011 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#    Source file        =  C:\Texas Instruments\ZStack-CC2530-2.5.1a\Projects #
+#                          \zstack\Samples\GenericApp\Source\init.c           #
+#    Command line       =  -f "C:\Texas Instruments\ZStack-CC2530-2.5.1a\Proj #
+#                          ects\zstack\Samples\GenericApp\CC2530DB\..\..\..\T #
+#                          ools\CC2530DB\f8wRouter.cfg" (-DCPU32MHZ           #
+#                          -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRU #
+#                          E -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8       #
+#                          -DMAC_CFG_RX_MAX=5 -DRTR_NWK) -f "C:\Texas         #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\Tools\CC2530DB #
+#                          \f8wConfig.cfg" (-DZIGBEEPRO -DSECURE=0            #
+#                          -DZG_SECURE_DYNAMIC=0 -DREFLECTOR                  #
+#                          -DDEFAULT_CHANLIST=0x00000800                      #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100)   #
+#                          -DREJOIN_POLL_RATE=440 "C:\Texas                   #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\Source\init.c" -D ZTOOL_P1 -D    #
+#                          xMT_TASK -D MT_SYS_FUNC -D MT_ZDO_FUNC -D          #
+#                          xLCD_SUPPORTED=DEBUG -lC "C:\Texas                 #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\RouterEB\List\" -lA     #
+#                          "C:\Texas Instruments\ZStack-CC2530-2.5.1a\Project #
+#                          s\zstack\Samples\GenericApp\CC2530DB\RouterEB\List #
+#                          \" --diag_suppress Pe001,Pa010 -o "C:\Texas        #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\RouterEB\Obj\" -e       #
+#                          --no_code_motion --debug --core=plain --dptr=16,1  #
+#                          --data_model=large --code_model=banked             #
+#                          --calling_convention=xdata_reentrant               #
+#                          --place_constants=data_rom --nr_virtual_regs 16    #
+#                          -I "C:\Texas Instruments\ZStack-CC2530-2.5.1a\Proj #
+#                          ects\zstack\Samples\GenericApp\CC2530DB\" -I       #
+#                          "C:\Texas Instruments\ZStack-CC2530-2.5.1a\Project #
+#                          s\zstack\Samples\GenericApp\CC2530DB\..\Source\"   #
+#                          -I "C:\Texas Instruments\ZStack-CC2530-2.5.1a\Proj #
+#                          ects\zstack\Samples\GenericApp\CC2530DB\..\..\..\Z #
+#                          Main\TI2530DB\" -I "C:\Texas                       #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\..\..\Componen #
+#                          ts\hal\include\" -I "C:\Texas                      #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\..\..\Componen #
+#                          ts\hal\target\CC2530EB\" -I "C:\Texas              #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\..\..\Componen #
+#                          ts\mac\include\" -I "C:\Texas                      #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\..\..\Componen #
+#                          ts\mac\high_level\" -I "C:\Texas                   #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\..\..\Componen #
+#                          ts\mac\low_level\srf04\" -I "C:\Texas              #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\..\..\Componen #
+#                          ts\mac\low_level\srf04\single_chip\" -I "C:\Texas  #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\..\..\Componen #
+#                          ts\mt\" -I "C:\Texas Instruments\ZStack-CC2530-2.5 #
+#                          .1a\Projects\zstack\Samples\GenericApp\CC2530DB\.. #
+#                          \..\..\..\..\Components\osal\include\" -I          #
+#                          "C:\Texas Instruments\ZStack-CC2530-2.5.1a\Project #
+#                          s\zstack\Samples\GenericApp\CC2530DB\..\..\..\..\. #
+#                          .\Components\services\saddr\" -I "C:\Texas         #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\..\..\Componen #
+#                          ts\services\sdata\" -I "C:\Texas                   #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\..\..\Componen #
+#                          ts\stack\af\" -I "C:\Texas                         #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\..\..\Componen #
+#                          ts\stack\nwk\" -I "C:\Texas                        #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\..\..\Componen #
+#                          ts\stack\sapi\" -I "C:\Texas                       #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\..\..\Componen #
+#                          ts\stack\sec\" -I "C:\Texas                        #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\..\..\Componen #
+#                          ts\stack\sys\" -I "C:\Texas                        #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\..\..\Componen #
+#                          ts\stack\zdo\" -I "C:\Texas                        #
+#                          Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\..\..\..\..\..\Componen #
+#                          ts\zmac\" -I "C:\Texas Instruments\ZStack-CC2530-2 #
+#                          .5.1a\Projects\zstack\Samples\GenericApp\CC2530DB\ #
+#                          ..\..\..\..\..\Components\zmac\f8w\" -Ohz          #
+#    List file          =  C:\Texas Instruments\ZStack-CC2530-2.5.1a\Projects #
+#                          \zstack\Samples\GenericApp\CC2530DB\RouterEB\List\ #
+#                          init.lst                                           #
+#    Object file        =  C:\Texas Instruments\ZStack-CC2530-2.5.1a\Projects #
+#                          \zstack\Samples\GenericApp\CC2530DB\RouterEB\Obj\i #
+#                          nit.r51                                            #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\Texas Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\GenericApp\Source\init.c
+      1          #include "ioCC2530.h"
+
+   \                                 In  segment SFR_AN, at 0x86
+   \   unsigned char volatile __sfr U0CSR
+   \                     U0CSR:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x88
+   \   union <unnamed> volatile __sfr _A_TCON
+   \                     _A_TCON:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x8c
+   \   unsigned char volatile __sfr PICTL
+   \                     PICTL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x8d
+   \   unsigned char volatile __sfr P1IEN
+   \                     P1IEN:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x8f
+   \   unsigned char volatile __sfr P0INP
+   \                     P0INP:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x90
+   \   union <unnamed> volatile __sfr _A_P1
+   \                     _A_P1:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x9a
+   \   unsigned char volatile __sfr IEN2
+   \                     IEN2:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0x9e
+   \   unsigned char volatile __sfr CLKCONSTA
+   \                     CLKCONSTA:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xa8
+   \   union <unnamed> volatile __sfr _A_IEN0
+   \                     _A_IEN0:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xab
+   \   unsigned char volatile __sfr P0IEN
+   \                     P0IEN:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xb8
+   \   union <unnamed> volatile __sfr _A_IEN1
+   \                     _A_IEN1:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xc2
+   \   unsigned char volatile __sfr U0BAUD
+   \                     U0BAUD:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xc4
+   \   unsigned char volatile __sfr U0UCR
+   \                     U0UCR:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xc5
+   \   unsigned char volatile __sfr U0GCR
+   \                     U0GCR:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xc6
+   \   unsigned char volatile __sfr CLKCONCMD
+   \                     CLKCONCMD:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xc9
+   \   unsigned char volatile __sfr WDCTL
+   \                     WDCTL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xda
+   \   unsigned char volatile __sfr T1CC0L
+   \                     T1CC0L:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xdb
+   \   unsigned char volatile __sfr T1CC0H
+   \                     T1CC0H:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xe4
+   \   unsigned char volatile __sfr T1CTL
+   \                     T1CTL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xe5
+   \   unsigned char volatile __sfr T1CCTL0
+   \                     T1CCTL0:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xe8
+   \   union <unnamed> volatile __sfr _A_IRCON2
+   \                     _A_IRCON2:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf1
+   \   unsigned char volatile __sfr PERCFG
+   \                     PERCFG:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf2
+   \   unsigned char volatile __sfr APCFG
+   \                     APCFG:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf3
+   \   unsigned char volatile __sfr P0SEL
+   \                     P0SEL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf4
+   \   unsigned char volatile __sfr P1SEL
+   \                     P1SEL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf6
+   \   unsigned char volatile __sfr P1INP
+   \                     P1INP:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf7
+   \   unsigned char volatile __sfr P2INP
+   \                     P2INP:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xfd
+   \   unsigned char volatile __sfr P0DIR
+   \                     P0DIR:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xfe
+   \   unsigned char volatile __sfr P1DIR
+   \                     P1DIR:
+   \   000000                DS 1
+      2          #include "init.h"
+      3          //****输出端口初始化
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+      4          void init_port(){
+   \                     init_port:
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+      5            //初始化输出端口
+      6            //初始化LED灯的I/O端口
+      7            P1SEL &= ~0x1b;   //P1_0、P1_1、P1_3和P1_4作为通用I/O端口
+   \   000000   53F4E4       ANL     0xf4,#0xe4
+      8            P1DIR |= 0x1b;    //P1_0、P1_1、P1_3和P1_4端口输出
+   \   000003   43FE1B       ORL     0xfe,#0x1b
+      9            //关闭所有的LED灯
+     10            P1 &= ~0x1b;
+   \   000006   5390E4       ANL     0x90,#0xe4
+     11            P1SEL &= ~0x04;     //P1_2作为通用I/O端口
+   \   000009   53F4FB       ANL     0xf4,#0xfb
+     12            P1DIR &= ~0x04;     //P1_2端口输入
+   \   00000C   53FEFB       ANL     0xfe,#0xfb
+     13            P1INP &= ~0x04;     //P1_2设置为上拉/下拉模式
+   \   00000F   53F6FB       ANL     0xf6,#0xfb
+     14            P2INP &= ~0x40;     //P1_2设置为上拉
+   \   000012   53F7BF       ANL     0xf7,#0xbf
+     15          
+     16            P0SEL &= ~0x02;     //P0_1作为通用I/O端口
+   \   000015   53F3FD       ANL     0xf3,#0xfd
+     17            P0DIR &= ~0x02;     //P0_1端口输入
+   \   000018   53FDFD       ANL     0xfd,#0xfd
+     18            P0INP &= ~0x02;     //P0_1设置为上拉/下拉模式
+   \   00001B   538FFD       ANL     0x8f,#0xfd
+     19            P2INP &= ~0x20;     //P0_1设置为上拉
+   \   00001E   53F7DF       ANL     0xf7,#0xdf
+     20          }
+   \   000021   02....       LJMP    ?BRET
+   \   000024                REQUIRE P1SEL
+   \   000024                REQUIRE P1DIR
+   \   000024                REQUIRE _A_P1
+   \   000024                REQUIRE P1INP
+   \   000024                REQUIRE P2INP
+   \   000024                REQUIRE P0SEL
+   \   000024                REQUIRE P0DIR
+   \   000024                REQUIRE P0INP
+     21          //****中断 sw_1 sw_2 初始化
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     22          void init_btn(int sta){ //设置上升沿还是下降沿  0是上升沿 1是下降沿
+   \                     init_btn:
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     23            //对SW1的中断使能
+     24            IEN2 |= 0x10;     //使能P1端口组外部中断（IEN2不能位操作）0001 0000
+   \   000000   439A10       ORL     0x9a,#0x10
+     25            P1IEN |= 0x04;    //使能P1_2引脚外部中断 0000 0100
+   \   000003   438D04       ORL     0x8d,#0x4
+     26            //对SW2的中断使能 0010 0000
+     27            IEN1 |= 0x20; //是P0端口组
+   \   000006   D2BD         SETB    0xb8.5
+     28            P0IEN |= 0x02;  //0000 0010
+   \   000008   43AB02       ORL     0xab,#0x2
+     29            if(sta){//下降沿触发
+   \   00000B   EA           MOV     A,R2
+   \   00000C   4B           ORL     A,R3
+   \   00000D   6008         JZ      ??init_btn_0
+     30              PICTL |= 0x02;   //配置P1_0到P1_3上升沿触发 0010
+   \   00000F   438C02       ORL     0x8c,#0x2
+     31              PICTL |= 0X01; //设置上升沿触发
+   \   000012   438C01       ORL     0x8c,#0x1
+   \   000015   8006         SJMP    ??init_btn_1
+     32            }else{//上升沿触发
+     33              PICTL &= ~0x02;   //配置P1_0到P1_3上升沿触发 0010
+   \                     ??init_btn_0:
+   \   000017   538CFD       ANL     0x8c,#0xfd
+     34              PICTL &= ~0X01; //设置上升沿触发
+   \   00001A   538CFE       ANL     0x8c,#0xfe
+     35            }
+     36            EA = 1;       //打开总中断
+   \                     ??init_btn_1:
+   \   00001D                REQUIRE ?Subroutine0
+   \   00001D                REQUIRE IEN2
+   \   00001D                REQUIRE P1IEN
+   \   00001D                REQUIRE _A_IEN1
+   \   00001D                REQUIRE P0IEN
+   \   00001D                REQUIRE PICTL
+   \   00001D                REQUIRE _A_IEN0
+   \   00001D                ; // Fall through to label ?Subroutine0
+     37          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   D2AF         SETB    0xa8.7
+   \   000002   02....       LJMP    ?BRET
+     38          // ****延时函数
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     39          void Delay(unsigned int t)
+   \                     Delay:
+     40          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     41            int i;
+     42            while(t--){
+   \                     ??Delay_0:
+   \   000000   EA           MOV     A,R2
+   \   000001   F8           MOV     R0,A
+   \   000002   EB           MOV     A,R3
+   \   000003   F9           MOV     R1,A
+   \   000004   E8           MOV     A,R0
+   \   000005   24FF         ADD     A,#-0x1
+   \   000007   1A           DEC     R2
+   \   000008   E9           MOV     A,R1
+   \   000009   34FF         ADDC    A,#-0x1
+   \   00000B   FB           MOV     R3,A
+   \   00000C   E8           MOV     A,R0
+   \   00000D   49           ORL     A,R1
+   \   00000E   70F0         JNZ     ??Delay_0
+     43              for(i=0;i<255;i++);
+     44            }
+     45          }
+   \   000010   02....       LJMP    ?BRET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     46          void Init_WDT(int sta)
+   \                     Init_WDT:
+     47          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     48            if(sta){
+   \   000000   EA           MOV     A,R2
+   \   000001   4B           ORL     A,R3
+   \   000002   600A         JZ      ??Init_WDT_0
+     49              WDCTL |= 0x0c;  //0000 1100
+   \   000004   43C90C       ORL     0xc9,#0xc
+     50              IEN2 |= 0x20;  //开启看门狗中断
+   \   000007   439A20       ORL     0x9a,#0x20
+     51              EA = 1;//开启总中断
+   \   00000A   D2AF         SETB    0xa8.7
+   \   00000C   8003         SJMP    ??Init_WDT_1
+     52            }else{
+     53              WDCTL |= 0x08;  //看门狗模式 时间间隔为1s
+   \                     ??Init_WDT_0:
+   \   00000E   43C908       ORL     0xc9,#0x8
+     54            }
+     55          }
+   \                     ??Init_WDT_1:
+   \   000011   02....       LJMP    ?BRET
+   \   000014                REQUIRE WDCTL
+   \   000014                REQUIRE IEN2
+   \   000014                REQUIRE _A_IEN0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     56          void Feed_DOG(){
+   \                     Feed_DOG:
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     57            WDCTL = 0XA0;//1010
+   \   000000   75C9A0       MOV     0xc9,#-0x60
+     58            WDCTL = 0X50;//0101
+   \   000003   75C950       MOV     0xc9,#0x50
+     59          }
+   \   000006   02....       LJMP    ?BRET
+   \   000009                REQUIRE WDCTL
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     60          void led_check(){
+   \                     led_check:
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     61            D5=1;D6=0;D3=0;D4=0;
+   \   000004   D293         SETB    0x90.3
+   \   000006   C294         CLR     0x90.4
+   \   000008   C290         CLR     0x90.0
+   \   00000A   C291         CLR     0x90.1
+     62            Delay(500);
+   \   00000C                ; Setup parameters for call to function Delay
+   \   00000C   7AF4         MOV     R2,#-0xc
+   \   00000E   7B01         MOV     R3,#0x1
+   \   000010   12....       LCALL   ??Delay?relay
+     63            D5=0;D6=1;D3=0;D4=0;
+   \   000013   C293         CLR     0x90.3
+   \   000015   D294         SETB    0x90.4
+   \   000017   C290         CLR     0x90.0
+   \   000019   C291         CLR     0x90.1
+     64            Delay(500);
+   \   00001B                ; Setup parameters for call to function Delay
+   \   00001B   7AF4         MOV     R2,#-0xc
+   \   00001D   7B01         MOV     R3,#0x1
+   \   00001F   12....       LCALL   ??Delay?relay
+     65            D5=0;D6=0;D3=1;D4=0;
+   \   000022   C293         CLR     0x90.3
+   \   000024   C294         CLR     0x90.4
+   \   000026   D290         SETB    0x90.0
+   \   000028   C291         CLR     0x90.1
+     66            Delay(500);
+   \   00002A                ; Setup parameters for call to function Delay
+   \   00002A   12....       LCALL   ?Subroutine1 & 0xFFFF
+     67            D5=0;D6=0;D3=0;D4=1;
+   \                     ??CrossCallReturnLabel_0:
+   \   00002D   D291         SETB    0x90.1
+     68            Delay(500);
+   \   00002F                ; Setup parameters for call to function Delay
+   \   00002F   12....       LCALL   ?Subroutine1 & 0xFFFF
+     69            D5=0;D6=0;D3=0;D4=0;
+   \                     ??CrossCallReturnLabel_1:
+   \   000032   C291         CLR     0x90.1
+     70          }
+   \   000034   D083         POP     DPH
+   \   000036   D082         POP     DPL
+   \   000038   02....       LJMP    ?BRET
+   \   00003B                REQUIRE _A_P1
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   7AF4         MOV     R2,#-0xc
+   \   000002   7B01         MOV     R3,#0x1
+   \   000004   12....       LCALL   ??Delay?relay
+   \   000007   C293         CLR     0x90.3
+   \   000009   C294         CLR     0x90.4
+   \   00000B   C290         CLR     0x90.0
+   \   00000D   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     71          void Init_32MClock(){
+   \                     Init_32MClock:
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     72            //初始化时钟函数
+     73            CLKCONCMD &=~0x40;//0100 0000系统时钟设置为32M
+   \   000000   53C6BF       ANL     0xc6,#0xbf
+     74            while(CLKCONSTA&0x40); //等待时钟切换
+   \                     ??Init_32MClock_0:
+   \   000003   E59E         MOV     A,0x9e
+   \   000005   A2E6         MOV     C,0xE0 /* A   */.6
+   \   000007   40FA         JC      ??Init_32MClock_0
+     75            CLKCONCMD &=~0x07;    //0000 0111当前时钟速率32M
+   \   000009   53C6F8       ANL     0xc6,#0xf8
+     76          }
+   \   00000C   02....       LJMP    ?BRET
+   \   00000F                REQUIRE CLKCONCMD
+   \   00000F                REQUIRE CLKCONSTA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     77          void Init_16MClock(){
+   \                     Init_16MClock:
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     78            //初始化时钟函数
+     79            CLKCONCMD |= 0x40;
+   \   000000   43C640       ORL     0xc6,#0x40
+     80            while(!(CLKCONSTA & 0x40));
+   \                     ??Init_16MClock_0:
+   \   000003   E59E         MOV     A,0x9e
+   \   000005   A2E6         MOV     C,0xE0 /* A   */.6
+   \   000007   50FA         JNC     ??Init_16MClock_0
+     81            CLKCONCMD |= 0x01;
+   \   000009   43C601       ORL     0xc6,#0x1
+     82          }
+   \   00000C   02....       LJMP    ?BRET
+   \   00000F                REQUIRE CLKCONCMD
+   \   00000F                REQUIRE CLKCONSTA
+     83          
+     84          /*======================初始化串口0函数=======================*/
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     85          void Init_Uart0()
+   \                     Init_Uart0:
+     86          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     87           //1-指定串口的IO位置；
+     88             PERCFG = 0x00;    //0000 0001 UART0,备用位置1
+   \   000000   75F100       MOV     0xf1,#0x0
+     89           //2-相应IO配置成片上外设功能；
+     90             P0SEL = 0x0C;   //0000 1100 P0_2,P0_3为片上外设
+   \   000003   75F30C       MOV     0xf3,#0xc
+     91           //3-选择串口工作方式（异步UART模式，8个数据位、1个停止位、无流控、无校验确立）。
+     92             U0CSR |=0xc0;  //1100 0000 设置为UART模式，接收使能
+   \   000006   4386C0       ORL     0x86,#0xc0
+     93             U0UCR |=0x80;  //1000 0000  当前为空闲状态
+   \   000009   43C480       ORL     0xc4,#0x80
+     94           //4-波特率；
+     95             U0GCR =8;
+   \   00000C   75C508       MOV     0xc5,#0x8
+     96             U0BAUD =59;
+   \   00000F   75C23B       MOV     0xc2,#0x3b
+     97           //5-清除发送、接收标志位
+     98             UTX0IF =0;
+   \   000012   C2E9         CLR     0xe8.1
+     99             URX0IF =0;
+   \   000014   C28B         CLR     0x88.3
+    100          //6-开CPU中断、对应串口接收中断；
+    101             URX0IE =1;//接收中断使能
+   \   000016   D2AA         SETB    0xa8.2
+    102             EA=1;
+   \   000018   02....       LJMP    ?Subroutine0 & 0xFFFF
+   \   00001B                REQUIRE PERCFG
+   \   00001B                REQUIRE P0SEL
+   \   00001B                REQUIRE U0CSR
+   \   00001B                REQUIRE U0UCR
+   \   00001B                REQUIRE U0GCR
+   \   00001B                REQUIRE U0BAUD
+   \   00001B                REQUIRE _A_IRCON2
+   \   00001B                REQUIRE _A_TCON
+   \   00001B                REQUIRE _A_IEN0
+    103          }
+    104          /*=====================定时器1初始化函数======================*/
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    105          void Init_Timer1()
+   \                     Init_Timer1:
+    106          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    107            T1CC0L = 0xd4;    //16MHz时钟128分频定时100ms 13
+   \   000000   75DAD4       MOV     0xda,#-0x2c
+    108            T1CC0H = 0x30;    //设先填低8位，再填高8位
+   \   000003   75DB30       MOV     0xdb,#0x30
+    109            T1CCTL0 |= 0x04;  //开启通道0的输出比较模式
+   \   000006   43E504       ORL     0xe5,#0x4
+    110            // T1IE = 1;         //使能定时器1中断	时钟使能
+    111            // T1OVFIM = 1;      //使能定时器1溢出中断
+    112            // EA = 1;           //使能总中断
+    113            T1CTL = 0x0e;     //分频系数是128,模模式 0000 1110
+   \   000009   75E40E       MOV     0xe4,#0xe
+    114          }
+   \   00000C   02....       LJMP    ?BRET
+   \   00000F                REQUIRE T1CC0L
+   \   00000F                REQUIRE T1CC0H
+   \   00000F                REQUIRE T1CCTL0
+   \   00000F                REQUIRE T1CTL
+    115          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    116          void init_ADC() // adc初始化
+   \                     init_ADC:
+    117          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    118            //1-P0设为模拟输入
+    119            APCFG |=0x01;  //0000 0001 P0_0模拟输入口，AD转换通道0
+   \   000000   43F201       ORL     0xf2,#0x1
+    120          }
+   \   000003   02....       LJMP    ?BRET
+   \   000006                REQUIRE APCFG
+    121          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    122          void init1s_WDT()//看门狗定时器初始化函数
+   \                     init1s_WDT:
+    123           {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    124             WDCTL |=0x0c;//0000 1100看门狗定时器功能，时间间隔为1S
+   \   000000   43C90C       ORL     0xc9,#0xc
+    125          
+    126             //IEN2 |=0x20;//0010 0000开看门狗中断
+    127             //EA=1;
+    128           }
+   \   000003   02....       LJMP    ?BRET
+   \   000006                REQUIRE WDCTL
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??init_port?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    init_port
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??init_btn?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    init_btn
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??Delay?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    Delay
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??Init_WDT?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    Init_WDT
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??Feed_DOG?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    Feed_DOG
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??led_check?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    led_check
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??Init_32MClock?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    Init_32MClock
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??Init_16MClock?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    Init_16MClock
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??Init_Uart0?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    Init_Uart0
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??Init_Timer1?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    Init_Timer1
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??init_ADC?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    init_ADC
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??init1s_WDT?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    init1s_WDT
+
+   Maximum stack usage in bytes:
+
+     Function      ISTACK PSTACK XSTACK
+     --------      ------ ------ ------
+     Delay             0      0      0
+     Feed_DOG          0      0      0
+     Init_16MClock     0      0      0
+     Init_32MClock     0      0      0
+     Init_Timer1       0      0      0
+     Init_Uart0        0      0      0
+     Init_WDT          0      0      0
+     init1s_WDT        0      0      0
+     init_ADC          0      0      0
+     init_btn          0      0      0
+     init_port         0      0      0
+     led_check         2      0      0
+       -> Delay        4      0      0
+       -> Delay        4      0      0
+       -> Delay        4      0      0
+       -> Delay        4      0      0
+
+
+   Segment part sizes:
+
+     Function/Label        Bytes
+     --------------        -----
+     U0CSR                    1
+     _A_TCON                  1
+     PICTL                    1
+     P1IEN                    1
+     P0INP                    1
+     _A_P1                    1
+     IEN2                     1
+     CLKCONSTA                1
+     _A_IEN0                  1
+     P0IEN                    1
+     _A_IEN1                  1
+     U0BAUD                   1
+     U0UCR                    1
+     U0GCR                    1
+     CLKCONCMD                1
+     WDCTL                    1
+     T1CC0L                   1
+     T1CC0H                   1
+     T1CTL                    1
+     T1CCTL0                  1
+     _A_IRCON2                1
+     PERCFG                   1
+     APCFG                    1
+     P0SEL                    1
+     P1SEL                    1
+     P1INP                    1
+     P2INP                    1
+     P0DIR                    1
+     P1DIR                    1
+     init_port               36
+     init_btn                29
+     ?Subroutine0             5
+     Delay                   19
+     Init_WDT                20
+     Feed_DOG                 9
+     led_check               59
+     ?Subroutine1            14
+     Init_32MClock           15
+     Init_16MClock           15
+     Init_Uart0              27
+     Init_Timer1             15
+     init_ADC                 6
+     init1s_WDT               6
+     ??init_port?relay        6
+     ??init_btn?relay         6
+     ??Delay?relay            6
+     ??Init_WDT?relay         6
+     ??Feed_DOG?relay         6
+     ??led_check?relay        6
+     ??Init_32MClock?relay    6
+     ??Init_16MClock?relay    6
+     ??Init_Uart0?relay       6
+     ??Init_Timer1?relay      6
+     ??init_ADC?relay         6
+     ??init1s_WDT?relay       6
+
+ 
+ 275 bytes in segment BANKED_CODE
+  72 bytes in segment BANK_RELAYS
+  29 bytes in segment SFR_AN
+ 
+ 347 bytes of CODE memory
+   0 bytes of DATA memory (+ 29 bytes shared)
+
+Errors: none
+Warnings: none
