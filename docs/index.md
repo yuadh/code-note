@@ -44,7 +44,6 @@ APP下载链接：[点击下载](https://code.yuadh.com/)
 - 《JavaScript 高级程序设计》
 - 《MongoDB权威指南》
 - 《ECMAScript6入门教程》
-- 《鸟哥Linux私房菜》
 
 ## 🍗项目特点
 
